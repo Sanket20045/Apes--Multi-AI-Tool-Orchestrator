@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apes — Multi-Tool AI Agent</title>
+  <meta name="description" content="Apes AI Agent powered by Google Gemini with native function calling for Calculator, Weather, Text Utilities, and Currency Conversion.">
+  
+  <!-- Modern Typography: Outfit & Inter from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+
+  <div class="app-container">
+    <!-- Header Navigation -->
+    <header class="app-header">
+      <div class="header-brand">
+        <div class="brand-logo">
+          <span class="logo-sparkle">✦</span>
+          <span class="logo-text">A</span>
+        </div>
+        <div class="brand-info">
+          <div class="brand-title-row">
+            <h1 class="brand-title">Apes</h1>
+            <span class="hackathon-tag">AI Agent</span>
+          </div>
+          <p class="brand-subtitle">Multi-Tool Orchestrator</p>
+        </div>
+      </div>
+
+      <div class="header-status">
+        <div id="connection-badge" class="status-pill status-loading">
+          <span class="status-dot"></span>
+          <span id="connection-text" class="status-label">Checking Status...</span>
+        </div>
+        <button id="clear-chat-btn" class="icon-btn" title="Clear Conversation" aria-label="Clear Chat">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 6h18"></path>
+            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="chat-wrapper">
+      <!-- Tool Capabilities Bar -->
+      <section class="tools-bar">
+        <div class="tool-badge-card" data-tool="calculator">
+          <span class="tool-icon">🧮</span>
+          <div class="tool-details">
+            <span class="tool-name">Calculator</span>
+            <span class="tool-hint">Safe AST Math</span>
+          </div>
+        </div>
+
+        <div class="tool-badge-card" data-tool="weather_lookup">
+          <span class="tool-icon">🌦️</span>
+          <div class="tool-details">
+            <span class="tool-name">Weather</span>
+            <span class="tool-hint">Open-Meteo Live</span>
+          </div>
+        </div>
+
+        <div class="tool-badge-card" data-tool="text_utility">
+          <span class="tool-icon">📝</span>
+          <div class="tool-details">
+            <span class="tool-name">Text Utility</span>
+            <span class="tool-hint">Count, Reverse, Case</span>
+          </div>
+        </div>
+
+        <div class="tool-badge-card" data-tool="currency_converter">
+          <span class="tool-icon">💱</span>
+          <div class="tool-details">
+            <span class="tool-name">Currency</span>
+            <span class="tool-hint">Frankfurter Rates</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Messages Thread Stream -->
+      <section id="chat-messages" class="chat-messages" aria-live="polite">
+        <!-- Clean Minimal Welcome State -->
+        <div id="welcome-card" class="welcome-card">
+          <div class="welcome-icon-glow">
+            <span class="welcome-emoji">⚡</span>
+          </div>
+          <h2 class="welcome-heading">Welcome to Apes</h2>
+          <p class="welcome-description">
+            Your multi-tool AI assistant for calculations, live weather lookups, text operations, and currency conversion. Type your request below to get started.
+          </p>
+        </div>
+      </section>
+
+      <!-- Input Footer -->
+      <footer class="chat-input-area">
+        <form id="chat-form" class="input-form">
+          <div class="input-container">
+            <textarea
+              id="user-input"
+              class="chat-textarea"
+              placeholder="Ask Apes anything..."
+              rows="1"
+              maxlength="2000"
+              required
+            ></textarea>
+            <button id="send-btn" type="submit" class="send-button" aria-label="Send query">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
+          <div class="input-hint">
+            <span>Press <strong>Enter</strong> to send &bull; <strong>Shift + Enter</strong> for newline</span>
+          </div>
+        </form>
+      </footer>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
