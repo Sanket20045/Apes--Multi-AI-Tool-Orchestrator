@@ -78,7 +78,7 @@
 ## Project Structure
 
 ```text
-ai-hackathon/
+Apes/
 │
 ├── server.py           # Zero-dependency Web backend server (http.server)
 ├── web/                # Pure HTML / CSS / JS Frontend Assets
@@ -112,7 +112,7 @@ ai-hackathon/
 
 1. **Navigate to the project directory:**
    ```bash
-   cd ai-hackathon
+   cd ai-hackatho
    ```
 
 2. **Install dependencies:**
