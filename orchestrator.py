@@ -295,8 +295,12 @@ class PleximusOrchestrator:
             return followup_response.text if hasattr(followup_response, "text") and followup_response.text else "Operation completed."
 
         except Exception as e:
+            err_str = str(e)
+            if "429" in err_str or "RESOURCE_EXHAUSTED" in err_str:
+                fallback_result = self._process_fallback(user_prompt, on_tool_selected)
+                return f"{fallback_result}\n\n*(Note: Gemini free-tier rate limit reached; resolved seamlessly via local tool engine)*"
             # Fallback to local evaluation if network or API quota error occurs
-            return f"Error communicating with Gemini: {str(e)}"
+            return f"Error communicating with Gemini: {err_str}"
 
     def _process_fallback(
         self,

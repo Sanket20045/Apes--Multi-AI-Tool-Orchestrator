@@ -6,7 +6,7 @@
 
 ## Interfaces Available
 
-1. **Clean Glassmorphic Web UI (`http://localhost:8000`):** Pure HTML5, Vanilla CSS, and JavaScript interface with real-time tool execution badges, minimal clean layout, and responsive chat.
+1. **Anime.js Web UI (`http://localhost:8000`):** Interactive UI built using the design aesthetics and components of **[animejs.com](https://animejs.com/)**, featuring a kinetic staggered matrix background, toolbox modules shelf, execution timeline scrubber, and spring-physics chat rendering.
 2. **Terminal Interactive CLI (`python main.py`):** Fast REPL chat session with real-time tool selection visibility.
 
 ---

@@ -3,45 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apes — Multi-Tool AI Agent</title>
-  <meta name="description" content="Apes AI Agent powered by Google Gemini with native function calling for Calculator, Weather, Text Utilities, and Currency Conversion.">
+  <title>Apes — AI Multi-Tool Agent</title>
+  <meta name="description" content="Apes AI Agent powered by Google Gemini and Anime.js with AST Calculator, Weather, Text Utilities, and Currency Conversion.">
   
-  <!-- Modern Typography: Outfit & Inter from Google Fonts -->
+  <!-- Modern Typography: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <!-- Ambient background glow elements -->
-  <div class="bg-glow bg-glow-1"></div>
-  <div class="bg-glow bg-glow-2"></div>
-  <div class="bg-glow bg-glow-3"></div>
+<body data-theme="anime-dark">
+  <!-- Interactive Anime.js Staggered Matrix Grid Background -->
+  <div id="anime-grid-matrix" class="grid-matrix-container" aria-hidden="true"></div>
 
-  <div class="app-container">
-    <!-- Header Navigation -->
-    <header class="app-header">
-      <div class="header-brand">
-        <div class="brand-logo">
-          <span class="logo-sparkle">✦</span>
-          <span class="logo-text">A</span>
-        </div>
-        <div class="brand-info">
-          <div class="brand-title-row">
-            <h1 class="brand-title">Apes</h1>
-            <span class="hackathon-tag">AI Agent</span>
+  <!-- Ambient Glow Elements -->
+  <div class="glow-orb glow-orb-1" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb-2" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb-3" aria-hidden="true"></div>
+
+  <div class="app-layout">
+    <!-- Header with animejs.com aesthetic -->
+    <header class="anime-header">
+      <div class="header-left">
+        <div class="brand-container" id="brand-logo">
+          <div class="brand-mark">
+            <svg viewBox="0 0 32 32" class="brand-svg-icon" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="16,4 28,26 4,26" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" class="brand-triangle" />
+              <circle cx="16" cy="18" r="3.5" fill="#ff4b4b" class="brand-center-dot" />
+            </svg>
           </div>
-          <p class="brand-subtitle">Multi-Tool Orchestrator</p>
+          <div class="brand-typography">
+            <h1 class="brand-title">
+              <span class="letter">A</span><span class="letter">p</span><span class="letter">e</span><span class="letter">s</span><span class="brand-dot">.</span>
+            </h1>
+            <span class="brand-tag">AI ORCHESTRATOR</span>
+          </div>
+        </div>
+
+        <div class="version-select-pill">
+          <span class="pill-badge">v4.0</span>
+          <span class="pill-label">ENGINE</span>
         </div>
       </div>
 
-      <div class="header-status">
-        <div id="connection-badge" class="status-pill status-loading">
-          <span class="status-dot"></span>
-          <span id="connection-text" class="status-label">Checking Status...</span>
+      <div class="header-right">
+        <!-- Live Status Badge -->
+        <div id="connection-badge" class="anime-status-badge status-loading">
+          <span class="pulse-dot"></span>
+          <span id="connection-text" class="status-text">Checking Core...</span>
         </div>
-        <button id="clear-chat-btn" class="icon-btn" title="Clear Conversation" aria-label="Clear Chat">
+
+        <!-- Scrubber toggle -->
+        <button id="toggle-timeline-btn" class="anime-icon-btn active" title="Toggle Execution Timeline" aria-label="Toggle Execution Timeline">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </button>
+
+        <!-- Clear Chat Button -->
+        <button id="clear-chat-btn" class="anime-icon-btn" title="Reset Session" aria-label="Reset Conversation">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 6h18"></path>
             <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
@@ -51,84 +73,165 @@
       </div>
     </header>
 
-    <!-- Main Content Area -->
-    <main class="chat-wrapper">
-      <!-- Tool Capabilities Bar -->
-      <section class="tools-bar">
-        <div class="tool-badge-card" data-tool="calculator">
-          <span class="tool-icon">🧮</span>
-          <div class="tool-details">
-            <span class="tool-name">Calculator</span>
-            <span class="tool-hint">Safe AST Math</span>
+    <!-- Main Workspace -->
+    <main class="anime-workspace">
+      <!-- Toolbox Module Shelf (Inspired by animejs.com 'The complete animator toolbox') -->
+      <section class="toolbox-shelf" aria-label="Available Tool Modules">
+        <div class="toolbox-card" data-tool="calculator" data-color="orange">
+          <div class="module-indicator">
+            <span class="module-dot"></span>
+            <span class="module-code">01</span>
+          </div>
+          <div class="module-info">
+            <div class="module-name">AST Calculator</div>
+            <div class="module-sig">Safe Math Evaluator</div>
+          </div>
+          <div class="module-accent-line"></div>
+        </div>
+
+        <div class="toolbox-card" data-tool="weather_lookup" data-color="sky">
+          <div class="module-indicator">
+            <span class="module-dot"></span>
+            <span class="module-code">02</span>
+          </div>
+          <div class="module-info">
+            <div class="module-name">Weather</div>
+            <div class="module-sig">Open-Meteo Live API</div>
+          </div>
+          <div class="module-accent-line"></div>
+        </div>
+
+        <div class="toolbox-card" data-tool="text_utility" data-color="turquoise">
+          <div class="module-indicator">
+            <span class="module-dot"></span>
+            <span class="module-code">03</span>
+          </div>
+          <div class="module-info">
+            <div class="module-name">Text Utility</div>
+            <div class="module-sig">Word / Transform Ops</div>
+          </div>
+          <div class="module-accent-line"></div>
+        </div>
+
+        <div class="toolbox-card" data-tool="currency_converter" data-color="lavender">
+          <div class="module-indicator">
+            <span class="module-dot"></span>
+            <span class="module-code">04</span>
+          </div>
+          <div class="module-info">
+            <div class="module-name">Currency</div>
+            <div class="module-sig">ECB FX Exchange Rates</div>
+          </div>
+          <div class="module-accent-line"></div>
+        </div>
+      </section>
+
+      <!-- Execution Timeline Scrubber (animejs.com Timeline Component) -->
+      <section id="execution-timeline" class="anime-timeline-bar">
+        <div class="timeline-header">
+          <div class="timeline-title-group">
+            <span class="timeline-status-icon">▶</span>
+            <span class="timeline-label">EXECUTION TIMELINE</span>
+            <span id="timeline-step-badge" class="timeline-step-tag">IDLE</span>
+          </div>
+          <div class="timeline-telemetry">
+            <span class="telemetry-item">LATENCY: <strong id="latency-counter">0ms</strong></span>
+            <span class="telemetry-item">MODE: <strong id="telemetry-model">STANDBY</strong></span>
           </div>
         </div>
 
-        <div class="tool-badge-card" data-tool="weather_lookup">
-          <span class="tool-icon">🌦️</span>
-          <div class="tool-details">
-            <span class="tool-name">Weather</span>
-            <span class="tool-hint">Open-Meteo Live</span>
+        <div class="timeline-track-wrapper">
+          <div class="timeline-track">
+            <div id="timeline-progress" class="timeline-progress-fill"></div>
+            <div id="timeline-cursor" class="timeline-cursor"></div>
           </div>
-        </div>
-
-        <div class="tool-badge-card" data-tool="text_utility">
-          <span class="tool-icon">📝</span>
-          <div class="tool-details">
-            <span class="tool-name">Text Utility</span>
-            <span class="tool-hint">Count, Reverse, Case</span>
-          </div>
-        </div>
-
-        <div class="tool-badge-card" data-tool="currency_converter">
-          <span class="tool-icon">💱</span>
-          <div class="tool-details">
-            <span class="tool-name">Currency</span>
-            <span class="tool-hint">Frankfurter Rates</span>
+          <div class="timeline-milestones">
+            <div class="milestone-node active" data-stage="input">
+              <span class="milestone-dot"></span>
+              <span class="milestone-name">1. Input</span>
+            </div>
+            <div class="milestone-node" data-stage="route">
+              <span class="milestone-dot"></span>
+              <span class="milestone-name">2. Gemini Router</span>
+            </div>
+            <div class="milestone-node" data-stage="execute">
+              <span class="milestone-dot"></span>
+              <span class="milestone-name">3. Tool AST</span>
+            </div>
+            <div class="milestone-node" data-stage="render">
+              <span class="milestone-dot"></span>
+              <span class="milestone-name">4. Synthesize</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Messages Thread Stream -->
-      <section id="chat-messages" class="chat-messages" aria-live="polite">
-        <!-- Clean Minimal Welcome State -->
-        <div id="welcome-card" class="welcome-card">
-          <div class="welcome-icon-glow">
-            <span class="welcome-emoji">⚡</span>
+      <!-- Message Stream Container -->
+      <section id="chat-messages" class="anime-messages-stream" aria-live="polite">
+        <!-- Clean Welcome Card -->
+        <div id="welcome-card" class="anime-welcome-box">
+          <div class="welcome-geometry">
+            <div class="geo-ring ring-outer"></div>
+            <div class="geo-ring ring-mid"></div>
+            <div class="geo-core">✦</div>
           </div>
-          <h2 class="welcome-heading">Welcome to Apes</h2>
-          <p class="welcome-description">
-            Your multi-tool AI assistant for calculations, live weather lookups, text operations, and currency conversion. Type your request below to get started.
+          <h2 class="welcome-title">Welcome to Apes</h2>
+          <p class="welcome-text">
+            High-performance AI Orchestrator with integrated tools for calculations, weather forecasting, text utilities, and live currency exchange.
           </p>
+          <div class="welcome-status-pill">
+            <span class="pulse-dot"></span>
+            <span>All 4 Tool Engines Ready</span>
+          </div>
         </div>
       </section>
 
-      <!-- Input Footer -->
-      <footer class="chat-input-area">
-        <form id="chat-form" class="input-form">
-          <div class="input-container">
+      <!-- Modern Anime.js Console Input Area -->
+      <footer class="anime-input-console">
+        <form id="chat-form" class="console-form">
+          <div class="console-box" id="console-box">
+            <div class="console-prefix">
+              <span class="prompt-symbol">›</span>
+            </div>
             <textarea
               id="user-input"
-              class="chat-textarea"
+              class="console-textarea"
               placeholder="Ask Apes anything..."
               rows="1"
               maxlength="2000"
               required
             ></textarea>
-            <button id="send-btn" type="submit" class="send-button" aria-label="Send query">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="22" y1="2" x2="11" y2="13"></line>
-                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-              </svg>
-            </button>
+            <div class="console-actions">
+              <button id="send-btn" type="submit" class="anime-send-btn" aria-label="Run command">
+                <span class="btn-text">RUN</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
           </div>
-          <div class="input-hint">
-            <span>Press <strong>Enter</strong> to send &bull; <strong>Shift + Enter</strong> for newline</span>
+          <div class="console-footer-meta">
+            <span class="meta-tag"><span>↵</span> Submit</span>
+            <span class="meta-separator">•</span>
+            <span class="meta-tag"><span>⇧ + ↵</span> Newline</span>
+            <span class="meta-separator">•</span>
+            <span class="meta-tag">Anime.js 3.2.2 Engine</span>
           </div>
         </form>
       </footer>
     </main>
   </div>
 
+  <!-- Load Anime.js (Local first, fallback to CDN) -->
+  <script src="anime.min.js"></script>
+  <script>
+    if (typeof anime === 'undefined') {
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js';
+      document.head.appendChild(script);
+    }
+  </script>
   <script src="app.js"></script>
 </body>
 </html>
